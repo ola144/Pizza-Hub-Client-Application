@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap");
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "DM Sans", "Segoe UI", sans-serif;
+  background: #fffaf5;
+  color: #2b1b14;
+}
+
+button {
+  @apply cursor-pointer disabled:cursor-no-drop;
+}
+
+button,
+input {
+  font: inherit;
+}
+.font-display {
+  font-family: "Playfair Display", Georgia, serif;
+}
