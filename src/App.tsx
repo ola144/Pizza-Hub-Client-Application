@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { lazy } from "react";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 const VerifyEmailPage = lazy(() => import("./pages/auth/VerifyEmailPage"));
 const LoginPage = lazy(() => import("./pages/auth/LoginPage"));
@@ -28,6 +29,7 @@ const OrderDetailsPage = lazy(() => import("./pages/user/OrderDetailsPage"));
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
