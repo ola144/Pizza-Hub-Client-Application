@@ -11,7 +11,7 @@ import {
 import { useLogin } from "../../hooks/useAuth";
 import { Eye, EyeOff } from "lucide-react";
 
-export function LoginPage() {
+function LoginPage() {
   const navigate = useNavigate();
 
   const login = useLogin();
@@ -119,3 +119,5 @@ export function LoginPage() {
     </AuthLayout>
   );
 }
+
+export default LoginPage;

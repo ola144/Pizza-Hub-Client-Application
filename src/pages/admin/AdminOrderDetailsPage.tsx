@@ -27,7 +27,8 @@ const statusOptions: OrderStatus[] = [
   "delivered",
   "cancelled",
 ];
-export function AdminOrderDetailsPage() {
+
+function AdminOrderDetailsPage() {
   const { orderId } = useParams();
   const order = useAdminOrder(orderId);
   const update = useUpdateAdminOrder();
@@ -199,3 +200,5 @@ export function AdminOrderDetailsPage() {
     </div>
   );
 }
+
+export default AdminOrderDetailsPage;

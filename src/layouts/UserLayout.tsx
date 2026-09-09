@@ -1,18 +1,25 @@
 import { useState } from "react";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useCurrentUser, useLogout } from "../hooks/useAuth";
 import {
   UserMobileMenuButton,
   UserSidebar,
 } from "../components/user/UserSidebar";
 
-export function UserLayout() {
+function UserLayout() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
 
   const user = useCurrentUser();
   const logout = useLogout();
+
+  const handleLogout = () => {
+    logout.mutateAsync();
+
+    navigate("/login");
+  };
 
   if (user.isLoading)
     return (
@@ -27,7 +34,7 @@ export function UserLayout() {
       <UserSidebar
         open={open}
         onClose={() => setOpen(false)}
-        onLogout={() => void logout.mutateAsync()}
+        onLogout={handleLogout}
         isLoggingOut={logout.isPending}
       />
       <div className="min-w-0 flex-1 overflow-y-auto lg:ml-72">
@@ -54,3 +61,5 @@ export function UserLayout() {
     </div>
   );
 }
+
+export default UserLayout;

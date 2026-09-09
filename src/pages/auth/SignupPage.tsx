@@ -9,7 +9,7 @@ import {
 import { useRegister } from "../../hooks/useAuth";
 import { Eye, EyeOff } from "lucide-react";
 
-export function SignupPage() {
+function SignupPage() {
   const navigate = useNavigate();
 
   const register = useRegister();
@@ -103,3 +103,5 @@ export function SignupPage() {
     </AuthLayout>
   );
 }
+
+export default SignupPage;

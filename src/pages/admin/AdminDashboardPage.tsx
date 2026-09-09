@@ -46,16 +46,20 @@ function StatCard({
   );
 }
 
-export function AdminDashboardPage() {
+function AdminDashboardPage() {
   const inventory = useInventory();
   const lowStock = useLowStock();
+
   const items = inventory.data?.inventory ?? [];
   const lowItems = lowStock.data?.items ?? [];
+
   const totalUnits = items.reduce((total, item) => total + item.stock, 0);
+
   const inventoryValue = items.reduce(
     (total, item) => total + item.stock * item.price,
     0,
   );
+
   return (
     <div>
       <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
@@ -173,3 +177,5 @@ export function AdminDashboardPage() {
     </div>
   );
 }
+
+export default AdminDashboardPage;

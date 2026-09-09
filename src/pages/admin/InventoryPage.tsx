@@ -12,7 +12,7 @@ const categories: Array<"all" | InventoryCategory> = [
   "vegetable",
 ];
 
-export function InventoryPage() {
+function InventoryPage() {
   const [category, setCategory] = useState<"all" | InventoryCategory>("all");
   const [search, setSearch] = useState("");
   const [editing, setEditing] = useState<InventoryItem>();
@@ -225,3 +225,5 @@ export function InventoryPage() {
     </div>
   );
 }
+
+export default InventoryPage;

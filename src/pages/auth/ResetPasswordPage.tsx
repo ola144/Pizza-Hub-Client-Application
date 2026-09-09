@@ -9,7 +9,7 @@ import {
 import { useResetPassword } from "../../hooks/useAuth";
 import { Eye, EyeOff } from "lucide-react";
 
-export function ResetPasswordPage() {
+function ResetPasswordPage() {
   const { token } = useParams();
   const navigate = useNavigate();
 
@@ -105,3 +105,5 @@ export function ResetPasswordPage() {
     </AuthLayout>
   );
 }
+
+export default ResetPasswordPage;

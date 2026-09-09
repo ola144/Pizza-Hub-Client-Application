@@ -10,7 +10,7 @@ import {
 import { useAdminLogin } from "../../hooks/useAuth";
 import { Eye, EyeOff } from "lucide-react";
 
-export function AdminLoginPage() {
+function AdminLoginPage() {
   const navigate = useNavigate();
 
   const login = useAdminLogin();
@@ -105,3 +105,5 @@ export function AdminLoginPage() {
     </AuthLayout>
   );
 }
+
+export default AdminLoginPage;

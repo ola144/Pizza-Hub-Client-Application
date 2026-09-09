@@ -10,9 +10,11 @@ const statusLabels: Record<string, string> = {
   delivered: "Delivered",
   cancelled: "Cancelled",
 };
-export function UserDashboardPage() {
+
+function UserDashboardPage() {
   const orders = useMyOrders();
   const recent = orders.data?.orders.slice(0, 3) ?? [];
+
   return (
     <div>
       <section className="relative overflow-hidden rounded-3xl bg-[#2b1b14] px-6 py-10 text-[#fffaf5] sm:px-10 lg:px-14">
@@ -132,3 +134,5 @@ export function UserDashboardPage() {
     </div>
   );
 }
+
+export default UserDashboardPage;

@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { useVerifyEmail } from "../../hooks/useAuth";
 import { AuthLayout } from "../../components/auth/AuthLayout";
 
-export function VerifyEmailPage() {
+function VerifyEmailPage() {
   const { token } = useParams();
   const verifyEmail = useVerifyEmail();
   const hasRequested = useRef(false);
@@ -60,3 +60,5 @@ export function VerifyEmailPage() {
     </AuthLayout>
   );
 }
+
+export default VerifyEmailPage;

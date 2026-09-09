@@ -1,22 +1,29 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { lazy } from "react";
 
-import { VerifyEmailPage } from "./pages/auth/VerifyEmailPage";
-import { LoginPage } from "./pages/auth/LoginPage";
-import { SignupPage } from "./pages/auth/SignupPage";
-import { ForgotPasswordPage } from "./pages/auth/ForgotPasswordPage";
-import { ResetPasswordPage } from "./pages/auth/ResetPasswordPage";
-import { AdminLayout } from "./layouts/AdminLayout";
-import { AdminLoginPage } from "./pages/auth/AdminLoginPage";
-import { AdminDashboardPage } from "./pages/admin/AdminDashboardPage";
-import { InventoryPage } from "./pages/admin/InventoryPage";
-import { AdminOrdersPage } from "./pages/admin/AdminOrdersPage";
-import { AdminOrderDetailsPage } from "./pages/admin/AdminOrderDetailsPage";
-import { UserLayout } from "./layouts/UserLayout";
-import { UserDashboardPage } from "./pages/user/UserDashboardPage";
-import { IngredientsPage } from "./pages/user/IngredientsPage";
-import { CreateOrderPage } from "./pages/user/CreateOrderPage";
-import { OrdersPage } from "./pages/user/OrdersPage";
-import { OrderDetailsPage } from "./pages/user/OrderDetailsPage";
+const VerifyEmailPage = lazy(() => import("./pages/auth/VerifyEmailPage"));
+const LoginPage = lazy(() => import("./pages/auth/LoginPage"));
+const SignupPage = lazy(() => import("./pages/auth/SignupPage"));
+const ForgotPasswordPage = lazy(
+  () => import("./pages/auth/ForgotPasswordPage"),
+);
+const ResetPasswordPage = lazy(() => import("./pages/auth/ResetPasswordPage"));
+const AdminLayout = lazy(() => import("./layouts/AdminLayout"));
+const AdminLoginPage = lazy(() => import("./pages/auth/AdminLoginPage"));
+const AdminDashboardPage = lazy(
+  () => import("./pages/admin/AdminDashboardPage"),
+);
+const InventoryPage = lazy(() => import("./pages/admin/InventoryPage"));
+const AdminOrdersPage = lazy(() => import("./pages/admin/AdminOrdersPage"));
+const AdminOrderDetailsPage = lazy(
+  () => import("./pages/admin/AdminOrderDetailsPage"),
+);
+const UserLayout = lazy(() => import("./layouts/UserLayout"));
+const UserDashboardPage = lazy(() => import("./pages/user/UserDashboardPage"));
+const IngredientsPage = lazy(() => import("./pages/user/IngredientsPage"));
+const CreateOrderPage = lazy(() => import("./pages/user/CreateOrderPage"));
+const OrdersPage = lazy(() => import("./pages/user/OrdersPage"));
+const OrderDetailsPage = lazy(() => import("./pages/user/OrderDetailsPage"));
 
 function App() {
   return (
@@ -37,10 +44,12 @@ function App() {
         <Route path="/order/new" element={<UserLayout />}>
           <Route index element={<CreateOrderPage />} />
         </Route>
+
         <Route path="/orders" element={<UserLayout />}>
           <Route index element={<OrdersPage />} />
           <Route path=":orderId" element={<OrderDetailsPage />} />
         </Route>
+
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Navigate to="dashboard" replace />} />
           <Route path="dashboard" element={<AdminDashboardPage />} />

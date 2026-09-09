@@ -16,11 +16,14 @@ const labels: Record<string, string> = {
   sent_to_delivery: "On the way",
   delivered: "Delivered",
 };
-export function OrderDetailsPage() {
+
+function OrderDetailsPage() {
   const { orderId } = useParams();
   const { data: orderData, isLoading, refetch } = useOrder(orderId);
   const data = orderData?.order;
+
   const current = data ? stages.indexOf(data.status) : -1;
+
   if (isLoading)
     return <p className="text-sm text-[#765f54]">Loading order details...</p>;
   if (!data)
@@ -134,3 +137,5 @@ export function OrderDetailsPage() {
     </div>
   );
 }
+
+export default OrderDetailsPage;

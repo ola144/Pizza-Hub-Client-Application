@@ -10,10 +10,13 @@ const filters: Array<"all" | InventoryCategory> = [
   "cheese",
   "vegetable",
 ];
-export function IngredientsPage() {
+
+function IngredientsPage() {
   const [filter, setFilter] = useState<"all" | InventoryCategory>("all");
   const [search, setSearch] = useState("");
+
   const inventory = useInventory(filter === "all" ? undefined : filter);
+
   const items = useMemo(
     () =>
       (inventory.data?.inventory ?? []).filter((item) =>
@@ -21,6 +24,7 @@ export function IngredientsPage() {
       ),
     [inventory.data?.inventory, search],
   );
+
   return (
     <div>
       <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#e85d04]">
@@ -90,3 +94,5 @@ export function IngredientsPage() {
     </div>
   );
 }
+
+export default IngredientsPage;

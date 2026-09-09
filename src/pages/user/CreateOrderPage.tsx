@@ -13,7 +13,8 @@ const title: Record<string, string> = {
   cheese: "Add your cheese",
   vegetable: "Finish with toppings",
 };
-export function CreateOrderPage() {
+
+function CreateOrderPage() {
   const navigate = useNavigate();
   const inventory = useInventory();
   const createOrder = useCreateOrder();
@@ -33,6 +34,7 @@ export function CreateOrderPage() {
   }, [inventory.data?.inventory]);
 
   const currentCategory = step < 3 ? required[step] : "vegetable";
+
   const options = useMemo(
     () =>
       items.filter(
@@ -87,6 +89,7 @@ export function CreateOrderPage() {
       );
     }
   };
+
   return (
     <div className="w-full">
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end w-full">
@@ -235,3 +238,5 @@ export function CreateOrderPage() {
     </div>
   );
 }
+
+export default CreateOrderPage;

@@ -29,11 +29,14 @@ const badge: Record<string, string> = {
   delivered: "bg-green-50 text-green-700",
   cancelled: "bg-red-50 text-red-700",
 };
-export function AdminOrdersPage() {
+
+function AdminOrdersPage() {
   const [status, setStatus] = useState<"all" | OrderStatus>("all");
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
+
   const orders = useAdminOrders(status === "all" ? undefined : status, page);
+
   const items = useMemo(
     () =>
       (orders.data?.orders ?? []).filter((order) => {
@@ -47,6 +50,7 @@ export function AdminOrdersPage() {
       }),
     [orders.data?.orders, search],
   );
+
   return (
     <div>
       <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
@@ -234,3 +238,5 @@ export function AdminOrdersPage() {
     </div>
   );
 }
+
+export default AdminOrdersPage;

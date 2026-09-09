@@ -1,16 +1,26 @@
 import { useState } from "react";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useCurrentUser, useLogout } from "../hooks/useAuth";
 import {
   AdminMobileMenuButton,
   AdminSidebar,
 } from "../components/admin/AdminSidebar";
 
-export function AdminLayout() {
+function AdminLayout() {
   const location = useLocation();
+  const navigate = useNavigate();
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
   const currentUser = useCurrentUser();
   const logout = useLogout();
+
+  const handleLogout = () => {
+    logout.mutateAsync();
+
+    navigate("/admin/login");
+  };
+
   if (currentUser.isLoading)
     return (
       <div className="grid min-h-screen place-items-center bg-[#fffaf5] text-sm text-[#765f54]">
@@ -19,10 +29,6 @@ export function AdminLayout() {
     );
   if (!currentUser.data?.user || currentUser.data.user.role !== "admin")
     return <Navigate to="/admin/login" state={{ from: location }} replace />;
-
-  const handleLogout = async () => {
-    await logout.mutateAsync();
-  };
 
   return (
     <div className="h-screen lg:overflow-hidden bg-[#f8f4f0] lg:flex">
@@ -56,3 +62,5 @@ export function AdminLayout() {
     </div>
   );
 }
+
+export default AdminLayout;

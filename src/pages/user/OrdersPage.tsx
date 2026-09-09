@@ -10,8 +10,10 @@ const labels: Record<string, string> = {
   delivered: "Delivered",
   cancelled: "Cancelled",
 };
-export function OrdersPage() {
+
+function OrdersPage() {
   const orders = useMyOrders();
+
   return (
     <div>
       <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#e85d04]">
@@ -71,3 +73,5 @@ export function OrdersPage() {
     </div>
   );
 }
+
+export default OrdersPage;
