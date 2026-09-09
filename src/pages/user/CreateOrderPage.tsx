@@ -115,19 +115,22 @@ function CreateOrderPage() {
       </div>
       <div className="mt-8 grid gap-y-8 gap-x-4 lg:grid-cols-3 w-full">
         <section className="rounded-2xl border border-[#eadfd8] bg-[#fffaf5] p-5 shadow-sm sm:p-4 lg:col-span-2">
-          <div className="mb-8 flex items-center gap-2 overflow-x-auto">
+          <div className="mb-8 flex items-center flex-wrap gap-2 overflow-x-auto">
             {[...required, "vegetable"].map((category, index) => (
               <div key={category} className="flex items-center gap-1">
-                <div
-                  className={`grid size-6 shrink-0 place-items-center rounded-full text-xs font-bold ${index < step ? "bg-green-100 text-green-700" : index === step ? "bg-[#e85d04] text-white" : "bg-[#f4ede8] text-[#a08d82]"}`}
-                >
-                  {index < step ? <Check size={15} /> : index + 1}
+                <div className="flex items-center gap-1">
+                  <span
+                    className={`grid size-6 shrink-0 place-items-center rounded-full text-xs font-bold ${index < step ? "bg-green-100 text-green-700" : index === step ? "bg-[#e85d04] text-white" : "bg-[#f4ede8] text-[#a08d82]"}`}
+                  >
+                    {index < step ? <Check size={15} /> : index + 1}
+                  </span>
+                  <span
+                    className={`whitespace-nowrap text-xs font-bold capitalize ${index === step ? "text-[#2b1b14]" : "text-[#a08d82]"}`}
+                  >
+                    {category}
+                  </span>
                 </div>
-                <span
-                  className={`whitespace-nowrap text-xs font-bold capitalize ${index === step ? "text-[#2b1b14]" : "text-[#a08d82]"}`}
-                >
-                  {category}
-                </span>
+
                 {index < 3 ? (
                   <ChevronRight size={15} className="text-[#d4c2b8]" />
                 ) : null}
