@@ -125,6 +125,7 @@ pizza/
 - /admin/login
 - /admin/dashboard
 - /admin/inventory
+- /admin/users
 - /admin/orders
 - /admin/orders/:orderId
 
