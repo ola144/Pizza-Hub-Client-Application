@@ -3,6 +3,7 @@ import { ArrowLeft, Check, Circle } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { useOrder } from "../../hooks/useOrders";
 import { PaymentButton } from "../../features/payment/PaymentBtn";
+import { useOrderRealtime } from "../../hooks/useOrderRealtime";
 
 const stages = [
   "order_received",
@@ -21,6 +22,8 @@ function OrderDetailsPage() {
   const { orderId } = useParams();
   const { data: orderData, isLoading, refetch } = useOrder(orderId);
   const data = orderData?.order;
+
+  useOrderRealtime(orderId);
 
   const current = data ? stages.indexOf(data.status) : -1;
 

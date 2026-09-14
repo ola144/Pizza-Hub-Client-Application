@@ -10,6 +10,7 @@ import {
 import type { CreateOrderPayload, OrderStatus } from "../types/order";
 
 export const ORDERS_QUERY_KEY = ["orders", "mine"];
+export const ORDER_QUERY_KEY = (id: string | undefined) => ["order", id];
 export const ADMIN_ORDERS_QUERY_KEY = ["admin", "orders"];
 
 export const useMyOrders = () =>
@@ -17,7 +18,7 @@ export const useMyOrders = () =>
 
 export const useOrder = (orderId: string | undefined) =>
   useQuery({
-    queryKey: ["orders", orderId],
+    queryKey: ORDER_QUERY_KEY(orderId),
     queryFn: () => getOrderApi(orderId as string),
     enabled: Boolean(orderId),
   });
@@ -41,7 +42,7 @@ export const useAdminOrders = (status?: OrderStatus, page = 1, limit = 10) =>
 
 export const useAdminOrder = (orderId: string | undefined) =>
   useQuery({
-    queryKey: ["admin", "orders", orderId],
+    queryKey: ORDER_QUERY_KEY(orderId),
     queryFn: () => getAdminOrderApi(orderId as string),
     enabled: Boolean(orderId),
   });
@@ -58,8 +59,7 @@ export const useUpdateAdminOrder = () => {
       status: OrderStatus;
     }) => updateAdminOrderApi(orderId, status),
     onSuccess: (result) => {
-      queryClient.setQueryData(["admin", "orders", result.order._id], result);
-      void queryClient.invalidateQueries({ queryKey: ADMIN_ORDERS_QUERY_KEY });
+      queryClient.setQueryData(["order", result.order._id], result);
     },
   });
 };

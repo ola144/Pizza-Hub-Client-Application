@@ -36,7 +36,36 @@ function AdminOrderDetailsPage() {
 
   const data = order.data?.order;
 
-  useOrderRealtime(orderId ?? "");
+  useOrderRealtime(orderId);
+
+  // useEffect(() => {
+  //   socket.connect();
+
+  //   const handleConnect = () => {
+  //     console.log("Connected:", socket.id);
+
+  //     socket.emit("join-order", orderId);
+  //   }
+
+  //   const handleOrderUpdate = (data: {
+  //     orderId: string;
+  //     status: string;
+  //   }) => {
+  //     console.log("Order updated:", data);
+  //   }
+
+  //   socket.on("connect", handleConnect);
+  //   socket.on("order-status-updated", handleOrderUpdate);
+
+  //   return () => {
+  //     socket.emit("leave-order", orderId);
+
+  //     socket.off("connect", handleConnect);
+  //     socket.off("order-status-updated", handleOrderUpdate);
+
+  //     socket.disconnect();
+  //   }
+  // }, [orderId]);
 
   if (order.isLoading)
     return <p className="text-sm text-[#765f54]">Loading order details...</p>;

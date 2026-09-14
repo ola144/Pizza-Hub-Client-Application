@@ -23,6 +23,7 @@ function VerifyEmailPage() {
         .response?.data?.message ||
       "This verification link is invalid or expired."
     : verifyEmail.data?.message;
+
   return (
     <AuthLayout
       eyebrow="Email verification"

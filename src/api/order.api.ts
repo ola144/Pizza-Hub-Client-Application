@@ -57,10 +57,11 @@ export const updateAdminOrderApi = async (
   orderId: string,
   status: OrderStatus,
 ) => {
-  const { data } = await api.patch<{
+  const response = await api.patch<{
     success: boolean;
     message: string;
     order: AdminOrder;
   }>(`/admin/orders/${orderId}/status`, { status });
-  return data;
+
+  return response.data;
 };
