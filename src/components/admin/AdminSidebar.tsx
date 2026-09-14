@@ -5,6 +5,7 @@ import {
   PackageSearch,
   Pizza,
   ShoppingBag,
+  Users,
   X,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
@@ -20,6 +21,7 @@ const navigation = [
   { label: "Overview", to: "/admin/dashboard", icon: LayoutDashboard },
   { label: "Inventory", to: "/admin/inventory", icon: PackageSearch },
   { label: "Orders", to: "/admin/orders", icon: ShoppingBag },
+  { label: "Users", to: "/admin/users", icon: Users },
 ];
 
 export function AdminSidebar({

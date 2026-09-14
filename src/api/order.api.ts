@@ -33,7 +33,7 @@ export const getOrderApi = async (orderId: string) => {
 export const getAdminOrdersApi = async (
   status?: OrderStatus,
   page = 1,
-  limit = 20,
+  limit = 10,
 ) => {
   const { data } = await api.get<{
     success: boolean;

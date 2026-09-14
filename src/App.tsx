@@ -16,6 +16,7 @@ const AdminDashboardPage = lazy(
 );
 const InventoryPage = lazy(() => import("./pages/admin/InventoryPage"));
 const AdminOrdersPage = lazy(() => import("./pages/admin/AdminOrdersPage"));
+const AdminUsersPage = lazy(() => import("./pages/admin/AdminUsersPage"));
 const AdminOrderDetailsPage = lazy(
   () => import("./pages/admin/AdminOrderDetailsPage"),
 );
@@ -58,6 +59,7 @@ function App() {
           <Route path="inventory" element={<InventoryPage />} />
           <Route path="orders" element={<AdminOrdersPage />} />
           <Route path="orders/:orderId" element={<AdminOrderDetailsPage />} />
+          <Route path="users" element={<AdminUsersPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
