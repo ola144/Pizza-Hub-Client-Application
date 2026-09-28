@@ -3,12 +3,12 @@ import {
   LogOut,
   Menu,
   PackageSearch,
-  Pizza,
   ShoppingBag,
   Users,
   X,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import Logo from "../../../public/images/pizzaHub.png";
 
 interface AdminSidebarProps {
   open: boolean;
@@ -46,10 +46,7 @@ export function AdminSidebar({
             className="flex items-center gap-3 text-lg font-bold tracking-tight"
             onClick={onClose}
           >
-            <span className="grid size-10 place-items-center rounded-xl bg-[#f47721] text-white">
-              <Pizza size={22} strokeWidth={2.5} />
-            </span>
-            Pizza<span className="text-[#f9b44d]">Hub</span>
+            <img src={Logo} alt="PizzaHub" className="size-10 rounded-xl" />
           </NavLink>
           <button
             aria-label="Close navigation"

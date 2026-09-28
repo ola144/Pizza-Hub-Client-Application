@@ -8,6 +8,7 @@ import {
   X,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import Logo from "../../../public/images/pizzaHub.png";
 
 interface UserSidebarProps {
   open: boolean;
@@ -44,10 +45,7 @@ export function UserSidebar({
             onClick={onClose}
             className="flex items-center gap-3 text-lg font-bold tracking-tight"
           >
-            <span className="grid size-10 place-items-center rounded-xl bg-[#f47721] text-white">
-              <Pizza size={22} />
-            </span>
-            Pizza<span className="text-[#f9b44d]">Hub</span>
+            <img src={Logo} alt="PizzaHub" className="size-10 rounded-xl" />
           </NavLink>
           <button
             aria-label="Close navigation"

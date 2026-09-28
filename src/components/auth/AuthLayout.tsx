@@ -1,6 +1,7 @@
 import type { InputHTMLAttributes, ReactNode } from "react";
 import { Pizza } from "lucide-react";
 import { Link } from "react-router-dom";
+import Logo from "../../../public/images/pizzaHub.png";
 
 interface AuthLayoutProps {
   children: ReactNode;
@@ -24,10 +25,10 @@ export function AuthLayout({
           to="/login"
           className="relative flex items-center gap-3 text-lg font-bold tracking-tight"
         >
-          <span className="grid size-10 place-items-center rounded-xl bg-[#f47721] text-white shadow-lg shadow-black/20">
+          <img src={Logo} alt="PizzaHub" className="size-10 rounded-xl" />
+          {/* <span className="grid size-10 place-items-center rounded-xl bg-[#f47721] text-white shadow-lg shadow-black/20">
             <Pizza size={22} strokeWidth={2.5} />
-          </span>
-          Pizza<span className="text-[#f9b44d]">Hub</span>
+          </span> */}
         </Link>
         <div className="relative max-w-md pb-2">
           <p className="mb-5 text-xs font-bold uppercase tracking-[0.24em] text-[#f9b44d]">
